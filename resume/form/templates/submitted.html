@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://wallpapercave.com/wp/KPZGQrc.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .alert {
+            margin-bottom: 20px;
+        }
+        .resume-card {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+            color: white; /* White text color */
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Light white shadow */
+        }
+        .resume-image {
+            max-height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .resume-name {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .resume-exp {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            max-height: none;
+            overflow: hidden;
+            white-space: normal;
+        }
+        .resume-btn {
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Profile Uploaded Successfully!</strong> <a href="/" class="text-reset"><strong>Click here</strong></a><strong> to go back to the upload page</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="container">
+    <div class="row">
+      {% for id in  data %}
+      <div class="col-md-4">
+        <div class="resume-card">
+          <img src="/media/{{ id.image}}" class="resume-image" alt="">
+          <h3 class="resume-name">{{ id.name }}</h3>
+          <p class="resume-exp">{{ id.exp }}</p>
+          <div class="d-grid gap-2">
+            <a href="/media/{{ id.cv}}" class="btn btn-primary resume-btn" role="button">View CV</a>
+            <a href="/media/{{ id.file}}" class="btn btn-primary resume-btn" role="button">View Resume</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
